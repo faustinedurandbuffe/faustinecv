@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Block Layout</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      margin: 0;
+      height: 100%;
+      padding-top: 5vw;
+      padding-left: 4vw;
+    }
+    body {
+      background-image: url("fond.png");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover; 
+      margin: 0;
+      height: 100%;
+      padding-top: 5vw;
+      padding-left: 4vw;
+      cursor: url('cursor-trail.png'), auto;
+    }
+
+  @font-face {
+    font-family: 'HelveticaCustom';
+    src: url('Helvetica.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'HelveticaCustom';
+    src: url('Helvetica-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'HelveticaCustom';
+    src: url('Helvetica-Oblique.ttf') format('truetype');
+    font-weight: normal;
+    font-style: oblique;
+  }
+
+    h1 {
+      font-family: 'HelveticaCustom', sans-serif;
+      font-weight: bold;
+      font-style: normal;
+      font-size: clamp(1.1rem, 1..55vw, 2rem);
+      font-weight: bold;
+      width: 100%;
+      margin-bottom: 0.4rem;
+    }
+
+    h2 {
+      font-family: 'HelveticaCustom', sans-serif;
+      font-weight: normal;
+      font-style: oblique;
+      font-size: clamp(0.9rem, 1.05vw, 1.25rem);
+      font-style: oblique;
+      font-weight: normal;
+      margin: 0.5rem 0;
+      margin-bottom: 0.3rem;
+    }
+
+    p {
+      font-family: 'HelveticaCustom', sans-serif;
+      font-weight: normal;
+      font-style: normal;
+      font-size: clamp(0.9rem, 1.05vw, 1.25rem);
+      font-weight: normal;
+      margin: 0.5rem 0;
+      margin-bottom: 0.3rem;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .skills {
+      width: 25%;
+      padding-top: 5vw;
+    }
+
+    .right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-intro {
+      height: 20%;
+      padding: 10px;
+    }
+
+    .columns {
+      flex: 1;
+      display: flex;
+    }
+
+    .column {
+      flex: 1;
+      padding: 10px;
+    }
+
+    .column:last-child {
+      border-right: none;
+    }
+
+    .column + .column {
+      border-left: 3px solid black; /* or another color */
+    }
+
+    a {
+      color: #ff0000;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #ffdbdb;
+      text-decoration: none; 
+    }
+
+  .highlight-rose {
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+      position: relative;
+      z-index: 0;
+    }
+
+    .highlight-rose::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -0.2em;
+  right: -0.2em;
+  bottom: 0;
+  z-index: -1;
+  background-color: red;
+  filter: blur(6px);
+  border-radius: 0.25em;
+  pointer-events: none;
+  animation: pulseBlur 2s ease-in-out infinite;
+}
+
+@keyframes pulseBlur {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+    background-color: red;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+    background-color: #ffdbdb;
+  }
+}
+
+.trail-dot {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  background-image: url('cursor.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.6;
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.8); }
+}
+
+body, a, button {
+  cursor: url('cursor-trail.png'), auto;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="skills" style="position: fixed;"><h1>Hard Skills</h1>
+    <p><span class="highlight-bts highlight-digital highlight-wltp highlight-graphik">Visual Communication & Editorial Layout</span><br>
+    <span class="highlight-uiux highlight-dev highlight-master highlight-digital">Interactive & Immersive Media Development</span><br>
+    <span class="highlight-dev highlight-master highlight-digital">Multimedia Installations</span><br>
+    <span class="highlight-dev highlight-master highlight-bts highlight-wltp">Digital Project Coordination</span><br>
+    <span class="highlight-master highlight-bts highlight-digital highlight-wltp highlight-graphik">Video Production & Editing</span><br>
+    <span class="highlight-dev">Data Visualization</span><br>
+    <span class="highlight-digital highlight-wltp highlight-graphik">Event Production & Scenography Design</span><br>
+    <span class="highlight-uiux highlight-bts">User Research & Data Analysis</span></p>
+
+    <h1>Soft Skills</h1>
+    <p><span class="highlight-bts highlight-master highlight-wltp">Project Management</span><br>
+    <span class="highlight-uiux highlight-dev highlight-master highlight-bts highlight-wltp highlight-graphik">Cross-disciplinary Collaboration</span><br>
+    <span class="highlight-bts highlight-digital highlight-wltp highlight-graphik">Communication & Promotion</span><br>
+    <span class="highlight-uiux highlight-dev highlight-master highlight-bts highlight-digital highlight-wltp highlight-graphik">Creative Problem Solving</span><br>
+    <span class="highlight-uiux highlight-dev highlight-master highlight-bts highlight-digital highlight-wltp highlight-graphik">Adaptability</span><br>
+    <span class="highlight-uiux highlight-dev highlight-bts">Research & Analytical Thinking</span><br>
+    <span class="highlight-wltp highlight-graphik">Client & Partner Relationship Building</span></p>
+
+    <h1>Info</h1>
+    <p>faustinedrd43@gmail.com<br>
+    Find me also on: <a href="https://www.linkedin.com/in/faustine-durand-568a12325/" target="_blank">LinkedIn</a> & <a href="https://www.behance.net/faustinedurand" target="_blank">Behance</a><br>
+    Download <a href="cv.pdf" download target="_blank">.pdf version</a></p></div>
+    <div class="right">
+      <div class="top-intro" style="text-align: center; padding-left: 35vw; padding-right: 10vw; padding-bottom:  3.24vw;"><h1>
+      I am a creative professional aiming to evolve into art and culture management,
+      combining my expertise with project and event production. I enjoy shaping narratives that
+      engage audiences in both physical and digital spaces. Fluent in French and Spanish,
+      I work well in international, multidisciplinary teams to deliver innovative cultural projects.
+    </h1></div>
+      <div class="columns" style="padding-top: 4.63vw;">
+        <div class="column" style="text-align: right; padding-left: 30vw; padding-right: 2vw;">
+          <div id="uiux-block"><h1>UI/UX Designer – Digital Experience Strategy</h1>
+          <h2>Basic-Fit, Amsterdam – Since Sept. 2024</h2>
+          <p>As part of a multidisciplinary team, I help design 
+          and optimize user experiences across digital platforms. 
+          I conduct research, testing, and data analysis to inform decisions, while collaborating with tech, product, 
+          and marketing to refine user-centered strategies.</p></div>
+          <div id="master-block"><h1 style="padding-top: 13.38vw;">Master’s in Design and Digital Creation</h1>
+          <h2>École Estienne, Paris – 2019 to 2021</h2>
+          <p>This diploma allowed me to focus on immersive media, interactive design, and audience experience. I took part 
+          in creative residencies, leading the development 
+          of an immersive project exploring the link between technology and prestidigitation. My thesis examined the role of “bad taste” in contemporary art through a cultural 
+          and institutional lens.
+          Worked with : <a href="https://www.gaite-lyrique.net/" target="_blank">La Gaîté Lyrique</a>, <a href="https://bbdo.com/" target="_blank">BBDO</a>, <a href="https://studio.mentalista.com/" target="_blank">Mentalista Studio</a>, <a href="https://www.lecarreaudutemple.eu/" target="_blank">Carreau du Temple</a>, <a href="https://www.mpaa.fr/" target="_blank">MPAA</a>, <a href="https://yvonneiii.fr/" target="_blank">Compagnie Yvonne III</a>.</p></div>
+          <div id="bts-block"><h1 style="padding-top: 17.78vw;">Bachelor’s in Graphic Design </h1>
+          <h2>Martinière-Diderot, Lyon – 2017 to 2019</h2>
+          <p>This program provided a solid foundation in printed 
+          and digital media, focusing on the theoretical principles 
+          of visual communication and culture. It included collaborative interdisciplinary workshops that enhanced both creative and technical skills.
+          Worked with : <a href="https://kollebolle.com/" target="_blank">Kolle Bolle</a>, <a href="https://www.am-cb.net/" target="_blank">Adrien M et Claire B</a>, 
+          <a href="https://cecile-roger.com/" target="_blank">Cecile + Roger.</a></p></div>
+      </div>
+        <div class="column" style="padding-right: 10vw; padding-left: 2vw; padding-bottom: 3.24vw;">
+          <div id="dev-block"><h1 style="padding-top: 9.03vw;">Assistant Developer – Art & Technology</h1>
+          <h2>Studio Daniel Canogar, Madrid – Sept. 2021 to June 2024</h2>
+          <p>In close collaboration with the art direction team, 
+          I contributed to developing large-scale multimedia installations by translating concepts into interactive digital experiences. I also conducted visual research 
+          and implemented data-driven visualizations using custom APIs to support and enrich the artworks’ narratives.</p></div>
+          <div id="digital-block"><h1 style="padding-top:   3.43vw;">Digital Designer – Art & Event Production</h1>
+          <h2>BPNXT, Vienna – Feb. to May 2020</h2>
+          <p>Mixing both technical and creative skills, I contributed to 
+          the creation and delivery of digital media, including live audiovisuals (VJing), for cultural events and immersive experiences.  I supported technical setup and maintenance of light installations and produced videos for presentations. 
+          I also helped prototype installations for the Festival of Lights alongside the team.</p></div>
+          <div id="wltp-block"><h1 style="padding-top: 3.06vw;">Cultural Project Coordinator & Producer</h1>
+          <h2>WLTP Collective, Paris – Dec. 2019 to Aug. 2021</h2>
+          <p>Within a Paris-based collective, I managed full event planning—from concept and venue coordination to on-site logistics and team supervision. I handled budgets, partnerships, and curated lineups with DJs and artists, while designing immersive scenographies. I participated to create digital communication and promotion to boost event visibility and impact.</p></div>
+          <div id="graphik-block"><h1 style="padding-top: 3.10vw;">Graphic Designer</h1>
+          <h2>Studio 300%, Bordeaux – May to August 2018</h2>
+          <p>This experience involved developing visual communication campaigns for cultural and commercial clients, designing visual identities and digital assets for various audiences 
+          and platforms. It also included supporting website development through close collaboration with developers, photographers, and product designers.</p></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const trail = [];
+const maxTrail = 15;
+
+document.addEventListener('mousemove', (e) => {
+  const dot = document.createElement('div');
+  dot.className = 'trail-dot';
+  dot.style.left = `${e.clientX}px`;
+  dot.style.top = `${e.clientY}px`;
+  document.body.appendChild(dot);
+  trail.push(dot);
+
+  // Remove from DOM after animation ends
+  setTimeout(() => {
+    dot.remove();
+  }, 600);
+});
+
+    const blocks = [
+      { id: 'uiux-block', className: 'highlight-uiux' },
+      { id: 'dev-block', className: 'highlight-dev' },
+      { id: 'master-block', className: 'highlight-master' },
+      { id: 'bts-block', className: 'highlight-bts' },
+      { id: 'digital-block', className: 'highlight-digital' },
+      { id: 'wltp-block', className: 'highlight-wltp' },
+      { id: 'graphik-block', className: 'highlight-graphik' }
+    ];
+
+    blocks.forEach(({ id, className }) => {
+      const block = document.getElementById(id);
+      const highlights = document.querySelectorAll(`.${className}`);
+
+      if (block) {
+        block.addEventListener('mouseenter', () => {
+          highlights.forEach(el => el.classList.add('highlight-rose'));
+        });
+
+        block.addEventListener('mouseleave', () => {
+          highlights.forEach(el => el.classList.remove('highlight-rose'));
+        });
+      }
+    });
+  </script>
+
+</script>
+
+</body>
+</html>
